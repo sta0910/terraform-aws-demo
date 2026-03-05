@@ -40,4 +40,5 @@ terraform.rc
 # ssh-key
 *.pem
 *.key
+*.pub
 # End of https://www.toptal.com/developers/gitignore/api/terraform
