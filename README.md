@@ -4,13 +4,14 @@ Udemy講座をベースにAWSインフラ構築を学習。
 改造予定。
 
 ## 構成
-- VPC
-- Subnet
-- Security Group
-- EC2
-- RDS
-- IAM Role
-#随時追加予定
+terraform/
+ ├ main.tf
+ ├ network.tf
+ ├ security_group.tf
+ ├ iam.tf
+ ├ appserver.tf
+ ├ rds.tf
+ ├ backend.tf
 
 ## 使用技術
 - Terraform
