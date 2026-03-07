@@ -3,16 +3,6 @@
 Udemy講座をベースにAWSインフラ構築を学習。
 改造予定。
 
-## 構成
-terraform/
- ├ main.tf
- ├ network.tf
- ├ security_group.tf
- ├ iam.tf
- ├ appserver.tf
- ├ rds.tf
- ├ backend.tf
-
 ## 使用技術
 - Terraform
 - AWS
