@@ -41,7 +41,7 @@ resource "aws_security_group_rule" "web_out_tcp3000" {
   source_security_group_id = aws_security_group.app_sg.id
 }
 
-# app security group（後から追加予定）
+# app security group
 resource "aws_security_group" "app_sg" {
   name        = "${var.project}-${var.enviroment}-app-sg"
   description = "application server role sg"
