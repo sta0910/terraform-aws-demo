@@ -18,33 +18,42 @@ resource "aws_key_pair" "keypair" {
 #-----------------
 
 resource "aws_ssm_parameter" "host" {
+  count = var.create_rds ? 1 : 0
+
   name  = "/${var.project}/${var.enviroment}/app/MYSQL_HOST"
   type  = "String"
-  value = aws_db_instance.mysql_standalone.address
+  value = aws_db_instance.mysql_standalone[0].address
 }
 
 resource "aws_ssm_parameter" "port" {
+  count = var.create_rds ? 1 : 0
   name  = "/${var.project}/${var.enviroment}/app/MYSQL_PORT"
   type  = "String"
-  value = aws_db_instance.mysql_standalone.port
+  value = aws_db_instance.mysql_standalone[0].port
 }
 
 resource "aws_ssm_parameter" "database" {
+  count = var.create_rds ? 1 : 0
+
   name  = "/${var.project}/${var.enviroment}/app/MYSQL_DATABASE"
   type  = "String"
-  value = aws_db_instance.mysql_standalone.name #nameがdatabase名
+  value = aws_db_instance.mysql_standalone[0].name #nameがdatabase名
 }
 
 resource "aws_ssm_parameter" "username" {
+  count = var.create_rds ? 1 : 0
+
   name  = "/${var.project}/${var.enviroment}/app/MYSQL_USERNAME"
   type  = "SecureString"
-  value = aws_db_instance.mysql_standalone.username
+  value = aws_db_instance.mysql_standalone[0].username
 }
 
 resource "aws_ssm_parameter" "password" {
+  count = var.create_rds ? 1 : 0
+  
   name  = "/${var.project}/${var.enviroment}/app/MYSQL_PASSWORD"
   type  = "SecureString"
-  value = aws_db_instance.mysql_standalone.password
+  value = aws_db_instance.mysql_standalone[0].password
 }
 
 #-----------------
