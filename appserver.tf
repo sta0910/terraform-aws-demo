@@ -50,7 +50,7 @@ resource "aws_ssm_parameter" "username" {
 
 resource "aws_ssm_parameter" "password" {
   count = var.create_rds ? 1 : 0
-  
+
   name  = "/${var.project}/${var.enviroment}/app/MYSQL_PASSWORD"
   type  = "SecureString"
   value = aws_db_instance.mysql_standalone[0].password

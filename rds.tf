@@ -55,8 +55,8 @@ resource "random_string" "db_passward" {
 }
 
 resource "aws_db_instance" "mysql_standalone" {
-  count = var.create_rds ? 1 : 0 #rdsをapply時に指定しないと起動しないよう
-  engine         = "mysql" #DBエンジン
+  count          = var.create_rds ? 1 : 0 #rdsをapply時に指定しないと起動しないよう
+  engine         = "mysql"                #DBエンジン
   engine_version = "8.0.40"
 
   identifier = "${var.project}-${var.enviroment}-mysql-standalone" #DBインスタンス名
