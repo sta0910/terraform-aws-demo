@@ -43,7 +43,7 @@ variable "domain" {
 }
 
 #rdsの起動に時間がかかるため以下を追加
-# terraform apply -var="create_rds=true"で指定しない場合はrdsは起動されない。
+# terraform apply -var="create_rds=true"で指定しない場合はrdsは作成されない。
 variable "create_rds" {
   default = false
 }
