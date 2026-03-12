@@ -33,7 +33,7 @@ resource "aws_route53_record" "route53_acm_dns_resolve" {
   }
 
   allow_overwrite = true
-  zone_id         = aws_route53_zone.route53_zone.id 
+  zone_id         = aws_route53_zone.route53_zone.id
   name            = each.value.name
   type            = each.value.type
   ttl             = 600
