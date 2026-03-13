@@ -17,7 +17,7 @@ resource "aws_s3_bucket" "s3_static_bucket" {
 resource "aws_s3_bucket_versioning" "s3_static_bucket_versioning" {
   bucket = aws_s3_bucket.s3_static_bucket.id
   versioning_configuration {
-    status = "Enabled"
+    status = "Disabled"
   }
 }
 
@@ -60,7 +60,7 @@ resource "aws_s3_bucket" "s3_deploy_bucket" {
 resource "aws_s3_bucket_versioning" "s3_deploy_bucket_versioning" {
   bucket = aws_s3_bucket.s3_deploy_bucket.id
   versioning_configuration {
-    status = "Enabled"
+    status = "Disabled"
   }
 }
 
