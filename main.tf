@@ -25,25 +25,8 @@ provider "aws" {
   region  = "ap-northeast-1"
 }
 
-#-----------------
-#Variables
-#-----------------
-
-variable "project" {
-  type = string
-}
-
-variable "enviroment" {
-  type = string
-}
-
-variable "domain" {
-  type = string
-
-}
-
-#rdsの起動に時間がかかるため以下を追加
-# terraform apply -var="create_rds=true"で指定しない場合はrdsは作成されない。
-variable "create_rds" {
-  default = false
+provider "aws" {
+  alias   = "virginia"
+  profile = "terraform"
+  region  = "us-east-1"
 }
