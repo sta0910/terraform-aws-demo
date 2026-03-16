@@ -53,7 +53,7 @@ resource "aws_alb_target_group" "aws_alb_target_group" {
   }
 }
 
-resource "aws_alb_target_group_attachment" "instance" {
-  target_group_arn = aws_alb_target_group.aws_alb_target_group.arn
-  target_id        = aws_instance.app_server.id
-}
+# resource "aws_alb_target_group_attachment" "instance" {
+#   target_group_arn = aws_alb_target_group.aws_alb_target_group.arn
+#   target_id        = aws_instance.app_server.id
+# }
