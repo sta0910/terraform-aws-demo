@@ -24,7 +24,7 @@ resource "aws_cloudfront_distribution" "cf" {
     origin_id   = aws_s3_bucket.s3_static_bucket.id
 
     s3_origin_config {
-      origin_access_identity = aws_cloudfront_origin_access_identity.cf_s3_origin_access_identity.cloudfront_access_identity_path
+      origin_access_identity = aws_cloudfront_origin_access_identity.cf_origin_access_identity.cloudfront_access_identity_path
     }
   }
 
@@ -49,7 +49,7 @@ resource "aws_cloudfront_distribution" "cf" {
     path_pattern     = "/public/*"
     allowed_methods  = ["GET", "HEAD"]
     cached_methods   = ["GET", "HEAD"]
-    target_origin_id = "aws_s3_bucket.s3_static_bucket.id"
+    target_origin_id = aws_s3_bucket.s3_static_bucket.id
 
     forwarded_values {
       query_string = false
@@ -86,7 +86,7 @@ resource "aws_cloudfront_origin_access_identity" "cf_origin_access_identity" {
 }
 
 resource "aws_route53_record" "route53_cloudfront" {
-  zone_id = data.aws_route53_zone.route53_zone.id
+  zone_id = aws_route53_zone.route53_zone.id
   name    = "dev.${var.domain}"
   type    = "A"
 

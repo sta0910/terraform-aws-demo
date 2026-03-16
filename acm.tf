@@ -18,7 +18,7 @@ resource "aws_acm_certificate" "tokyo_cert" {
   }
 
   depends_on = [
-    data.aws_route53_zone.route53_zone
+    aws_route53_zone.route53_zone
   ]
 }
 
@@ -33,7 +33,7 @@ resource "aws_route53_record" "route53_acm_dns_resolve" {
   }
 
   allow_overwrite = true
-  zone_id         = data.aws_route53_zone.route53_zone.id
+  zone_id         = aws_route53_zone.route53_zone.id
   name            = each.value.name
   type            = each.value.type
   ttl             = 600
@@ -64,6 +64,6 @@ resource "aws_acm_certificate" "virginia_cert" {
   }
 
   depends_on = [
-    data.aws_route53_zone.route53_zone
+    aws_route53_zone.route53_zone
   ]
 }

@@ -44,7 +44,7 @@ data "aws_iam_policy_document" "s3_static_bucket" {
     resources = ["${aws_s3_bucket.s3_static_bucket.arn}/*"]
     principals {
       type        = "AWS"
-      identifiers = [aws_cloudfront_origin_access_identity.cf_s3_origin_access_identity.iam_arn]
+      identifiers = [aws_cloudfront_origin_access_identity.cf_origin_access_identity.iam_arn]
     }
   }
 }

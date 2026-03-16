@@ -2,10 +2,8 @@
 # Route53
 #--------------------
 
-
-data "aws_route53_zone" "route53_zone" {
-  name         = var.domain
-  private_zone = false
+resource "aws_route53_zone" "route53_zone" {
+  name = var.domain
 
   tags = {
     Name    = "${var.project}-${var.enviroment}-domain"
@@ -14,9 +12,8 @@ data "aws_route53_zone" "route53_zone" {
   }
 }
 
-
 resource "aws_route53_record" "route53_record" {
-  zone_id = data.aws_route53_zone.route53_zone.id
+  zone_id = aws_route53_zone.route53_zone.zone_id
   name    = "dev-elb.${var.domain}"
   type    = "A"
 
