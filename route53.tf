@@ -5,6 +5,7 @@
 resource "aws_route53_zone" "route53_zone" {
   name = var.domain
 
+lifecycle { prevent_destroy = true }
   tags = {
     Name    = "${var.project}-${var.enviroment}-domain"
     Project = var.project
