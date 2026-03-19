@@ -113,3 +113,36 @@ resource "aws_launch_template" "app_lt" {
 
   user_data = filebase64("./src/initialize.sh")
 }
+
+#-----------------
+# ASG 
+#-----------------
+
+resource "aws_autoscaling_group" "app_asg" {
+  name             = "${var.project}-${var.enviroment}-app-asg"
+  max_size         = 1
+  min_size         = 1
+  desired_capacity = 1
+
+  health_check_grace_period = 300
+  health_check_type         = "ELB"
+
+  vpc_zone_identifier = [
+    aws_subnet.public_subnet_1a.id,
+    aws_subnet.public_subnet_1c.id
+  ]
+
+  target_group_arns = [aws_alb_target_group.aws_alb_target_group.arn]
+
+  mixed_instances_policy {
+    launch_template {
+      launch_template_specification {
+        launch_template_id = aws_launch_template.app_lt.id
+        version            = "LATEST"
+      }
+      override {
+        instance_type = "t2.micro"
+      }
+    }
+  }
+}
