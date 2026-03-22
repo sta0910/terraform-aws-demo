@@ -1,7 +1,7 @@
 # Terraform AWS practice
 
-Udemy講座をベースにAWSインフラ構築を学習。
-改造予定。
+Udemy講座をベースにWeb３層アーキテクチャを作成。
+気になったところは改修・追加予定。
 
 ## 使用技術
 - Terraform
