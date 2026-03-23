@@ -9,11 +9,13 @@ terraform {
       version = "~>3.0"
     }
   }
+  #複数人で同時にapplyすると競合してtfstateが不正になる事があるのでDynamoDBでロックをかける→S3でその機能が追加されたらしい
   backend "s3" {
     bucket  = "tastylog-tfstate-bucket-sota-takahashi" #本来はアカウントを分けるべきだか今回は同一アカウントで
     key     = "tastylog-dev-tfstate"                   #devの部分を変数化するとうまく動かない
     region  = "ap-northeast-1"
     profile = "terraform"
+    use_lockfile = true
   }
 }
 
