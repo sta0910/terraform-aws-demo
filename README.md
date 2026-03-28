@@ -1,6 +1,6 @@
 # Terraform AWS practice
 
-Udemy講座をベースにWeb３層アーキテクチャを作成。
+Web３層アーキテクチャを作成。
 気になったところは改修・追加予定。
 
 ・VPC（public/private subnet構成）
